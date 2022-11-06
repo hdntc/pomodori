@@ -1,11 +1,12 @@
-import { Flex, Text, Img, chakra, box } from "@chakra-ui/react";
+import { Flex, Text, Img, chakra, Box } from "@chakra-ui/react";
 
-const Feature = ({children, title, step, src, imgLocation}) => {
-    // imgLocation should be one of ["right", "left"]
+const Feature = ({children, title, step, src, imgOrientation}) => {
+    // imgOrientation should be one of ["right", "left"]
 
     return <Flex
     width="40%"
     flexDir="column"
+    mb="64px"
     >
         <Flex
         justify="space-between"
@@ -37,6 +38,7 @@ const Feature = ({children, title, step, src, imgLocation}) => {
         <Flex
         width="100%"
         height="200px"
+        flexDir={imgOrientation == "left" ? "row" : "row-reverse"}
         mt="32px"
         >
             <Box
@@ -44,14 +46,15 @@ const Feature = ({children, title, step, src, imgLocation}) => {
             height="200px"
             bgColor="gray"
             flexShrink="0"
-            mr="32px"
+            mr={imgOrientation == "left" ? "48px" : "0px"}
+            ml={imgOrientation == "left" ? "0px" : "48px"}
             >
 
             </Box>
             <Text
-            height="200px"
+            margin="auto"
             width="100%"
-            textAlign="left"
+            textAlign={imgOrientation == "left" ? "right" : "left"}
             verticalAlign="middle"
             fontSize="20px"
             >
@@ -60,3 +63,5 @@ const Feature = ({children, title, step, src, imgLocation}) => {
         </Flex>
     </Flex>
 }
+
+export default Feature;

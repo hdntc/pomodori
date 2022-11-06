@@ -3,6 +3,7 @@ import { Link, Heading, Text, Img, Flex, Button, Box, chakra } from "@chakra-ui/
 
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
+import Feature from "../components/Feature";
 
 export default function Home() {
     return <Box
@@ -27,67 +28,58 @@ export default function Home() {
         align="center"
         mt="64px"
         >
-            <Flex
-            width="40%"
-            flexDir="column"
+            <Feature
+            step={1}
+            imgOrientation="left"
+            title="Create a session"
             >
-                <Flex
-                justify="space-between"
-                align="center"
-                height="40px"
+                <chakra.span
+                color="#00b545"
+                fontWeight="bold"
                 >
-                    <Text 
-                    width="80px"
-                    fontSize="20px"
-                    fontWeight="bold"
-                    >
-                        Step 1
-                    </Text>
-                    <Text
-                    width="250px"
-                    fontSize="28px"
-                    fontWeight="bold"
-                    color="#ED3B3B"
-                    textAlign="center"
-                    >
-                        Create a session
-                    </Text>
-                    <Text
-                    width="80px" // this is a hack for the effect im going for
-                    >
-                        
-                    </Text>
-                </Flex>
-                <Flex
-                width="100%"
-                height="200px"
-                mt="32px"
+                    Create a session    
+                </chakra.span> for your friends to join. You can also make it a single-person session.
+            </Feature>
+            <Feature
+            step={2}
+            imgOrientation="right"
+            title="Work"
+            >
+                Each sesson has a <chakra.span
+                color="#00b545"
+                fontWeight="bold"
                 >
-                    <Box
-                    width="200px"
-                    height="200px"
-                    bgColor="gray"
-                    flexShrink="0"
-                    mr="32px"
-                    >
+                    pomodoro timer
+                </chakra.span> shared by all users in the room. 
 
-                    </Box>
-                    <Text
-                    height="200px"
-                    width="100%"
-                    textAlign="left"
-                    verticalAlign="middle"
-                    fontSize="20px"
-                    >
-                        <chakra.span
-                        color="#00b545"
-                        fontWeight="bold"
-                        >
-                            Create a session    
-                        </chakra.span> for your friends to join. You can also make it a single-person session.
-                    </Text>
-                </Flex>
-            </Flex>
+                <br/><br/>Work until the pomodoro timer is complete.
+            </Feature>
+            <Feature
+            step={3}
+            imgOrientation="left"
+            title="Relax"
+            >
+                When the pomodoro timer is finished, you can relax and type messages into the session chat.<br/><br/>
+
+                You can also <chakra.span
+                color="#00b545"
+                fontWeight="bold"
+                >
+                    configure the next work session,
+                </chakra.span> for example by voting for music that plays for all users.
+            </Feature>
+            <Feature
+            step={4}
+            imgOrientation="right"
+            title="Repeat"
+            >
+                After the break is complete, you <chakra.span
+                color="#00b545"
+                fontWeight="bold"
+                >
+                    repeat
+                </chakra.span> the whole thing again until your work is done.
+            </Feature>
 
         </Flex>
     </Box>
