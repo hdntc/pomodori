@@ -6,6 +6,7 @@ const Navbar = (props) => {
     bgColor="#ED3B3B"
     width="100vw"
     flexShrink="0"
+    display="sticky"
     >
         
     </Flex>

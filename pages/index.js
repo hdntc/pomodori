@@ -1,5 +1,5 @@
 import NextLink from "next/link";
-import { Link, Heading, Text, Img, Flex } from "@chakra-ui/react";
+import { Link, Heading, Text, Img, Flex, Button } from "@chakra-ui/react";
 
 import Navbar from "../components/Navbar";
 
@@ -20,7 +20,7 @@ export default function Home() {
             >
                 <Flex
                 flexDir="column"
-                mr="32px"
+                mr="64px"
                 >
                     <Heading 
                     fontSize="56px"
@@ -36,6 +36,21 @@ export default function Home() {
                     >
                         The place to to study with your friends. This is where you go to study with your friends, and do things together while still having fun and studying with your friends. 
                     </Text>
+                    <Flex
+                    height="50px"
+                    width="100%"
+                    mt="32px"
+                    >
+                        <Button
+                        height="50px"
+                        colorScheme="red"
+                        border="2px #00FF61 solid"
+                        width="150px"
+                        fontSize="24px"
+                        >
+                            Let's go
+                        </Button>
+                    </Flex>
                 </Flex>
                 <Img src="../tomatos.png" width="245px" height="316px"/>
             </Flex>
