@@ -4,9 +4,9 @@ const Navbar = (props) => {
     return <Flex
     height="40px"
     bgColor="#ED3B3B"
-    width="100vw"
-    flexShrink="0"
-    display="sticky"
+    position="sticky"
+    top="0"
+    width="100%"
     >
         
     </Flex>
