@@ -6,7 +6,7 @@ const Feature = ({children, title, step, src, imgOrientation}) => {
     return <Flex
     width="40%"
     flexDir="column"
-    mb="64px"
+    mb="128px"
     >
         <Flex
         justify="space-between"
