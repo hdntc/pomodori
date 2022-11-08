@@ -38,6 +38,7 @@ const Hero = (props) => {
                     border="2px #00b545 solid"
                     width="150px"
                     fontSize="24px"
+                    zIndex="-1"
                     >
                         Let's go
                     </Button>
