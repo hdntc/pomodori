@@ -7,6 +7,7 @@ const Navbar = (props) => {
     position="sticky"
     top="0"
     width="100%"
+    zIndex="10000"
     >
         
     </Flex>
