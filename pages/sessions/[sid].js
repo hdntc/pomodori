@@ -5,6 +5,7 @@ import YouTube from "react-youtube";
 
 import Timer from "../../components/Timer.js";
 import Navbar from "../../components/Navbar.js";
+import Tracks from "../../components/Tracks.js";
 
 const SessionPage = (props) => {
     const router = useRouter();
@@ -40,6 +41,7 @@ const SessionPage = (props) => {
         }}>
             aodijasod
         </Button>
+        <Tracks/>
     </Box>
 }
 

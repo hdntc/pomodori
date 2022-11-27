@@ -84,12 +84,3 @@ export default function Home() {
         </Flex>
     </Box>
 }
-
-/*
-Good day
-<NextLink href="/about" legacyBehavior passHref>
-    <Link>
-        Good day sirs
-    </Link>
-</NextLink>
-*/
