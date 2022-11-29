@@ -3,7 +3,7 @@ import { IoIosAddCircle } from "react-icons/io";
 import { FaPlay } from "react-icons/fa";
 import { Flex, Text } from "@chakra-ui/react";
 
-import Volume from "./Volume.js"
+import Volume from "./Volume"
 
 const Tracks = (props) => {
     return <Flex

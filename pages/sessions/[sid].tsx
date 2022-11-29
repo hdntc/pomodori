@@ -3,13 +3,13 @@ import { useRef } from "react";
 import { Flex, Box, Button } from "@chakra-ui/react";
 import YouTube from "react-youtube";
 
-import Timer from "../../components/Timer.js";
-import Navbar from "../../components/Navbar.js";
-import Tracks from "../../components/Tracks.js";
+import Timer from "../../components/Timer";
+import Navbar from "../../components/Navbar";
+import Tracks from "../../components/Tracks";
 
 const SessionPage = (props) => {
     const router = useRouter();
-    const youtube = useRef();
+    const youtube = useRef<null | YouTube>();
     const { sid } = router.query;
 
     return <Box
