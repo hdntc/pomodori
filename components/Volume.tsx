@@ -11,10 +11,12 @@ const Volume = (props) => {
     defaultValue={40}
     >
         <SliderTrack
-        height="2px"
+        height="4px"
+        bgColor="#FFFFFF66"
         >
             <SliderFilledTrack
-            bgColor="black"
+            bgColor="white"
+            height="4px"
             />
         </SliderTrack>
         <SliderThumb/>
