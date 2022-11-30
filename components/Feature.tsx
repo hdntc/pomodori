@@ -1,8 +1,15 @@
 import { Flex, Text, Img, chakra, Box } from "@chakra-ui/react";
+import { ReactNode } from "react";
 
-const Feature = ({children, title, step, src, imgOrientation}) => {
-    // imgOrientation should be one of ["right", "left"]
+export interface FeatureProps {
+    children: ReactNode,              // Children components
+    title: string,                    // Title of the feature
+    step: number,                     // Which step in the process
+    src?: string,                     // Path to image to be displayed
+    imgOrientation: "left" | "right"  // Whether the image should be on the left or the right of the screen
+}
 
+const Feature: React.FC = ({children, title, step, src, imgOrientation}: FeatureProps) => {
     return <Flex
     width="40%"
     flexDir="column"

@@ -1,6 +1,6 @@
 import { Flex } from "@chakra-ui/react";
 
-const Navbar = (props) => {
+const Navbar = ({}) => {
     return <Flex
     height="40px"
     bgColor="#ED3B3B"

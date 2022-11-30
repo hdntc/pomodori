@@ -1,6 +1,6 @@
 import { Flex, Heading, Text, Button, Img } from "@chakra-ui/react"
 
-const Hero = (props) => {
+const Hero = ({}) => {
     return <Flex // hero
     justify="center"
     align="center"

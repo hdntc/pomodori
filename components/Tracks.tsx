@@ -4,8 +4,13 @@ import { FaPlay } from "react-icons/fa";
 import { Flex, Text, Box, Slider, SliderTrack, SliderFilledTrack, SliderThumb, SliderMark} from "@chakra-ui/react";
 
 import Volume from "./Volume"
+import Track, { TrackProps } from "./Track"
 
-const Tracks = (props) => {
+export interface TracksProps {
+    tracks: React.FC<TrackProps>[]
+}
+
+const Tracks = ({tracks}: TracksProps) => {
     return <Flex
     width="500px"
     height="500px"
@@ -118,7 +123,9 @@ const Tracks = (props) => {
                 </Flex>
             </Flex>
         </Flex>
-        
+        <> 
+            {tracks}
+        </>
     </Flex>
 }
 

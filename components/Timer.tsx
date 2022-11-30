@@ -1,8 +1,14 @@
 import { Flex, Box, Button, Slider, SliderFilledTrack, SliderTrack, SliderThumb, Text } from "@chakra-ui/react";
 import { MdPause, MdPlayArrow } from "react-icons/md";
 import { useState, useEffect } from "react";
+import { MutableRefObject } from "react";
+import YouTube from "react-youtube";
 
-const Timer = ({youtubeRef}) => {
+export interface TimerProps {
+    youtubeRef: MutableRefObject<YouTube> // A ref created through useRef pointing to a YouTube component
+}
+
+const Timer = ({youtubeRef}: TimerProps) => {
     const [time, setTime] = useState(1200);
 
     const timeToMMSS = (seconds) => {
