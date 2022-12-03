@@ -24,7 +24,7 @@ const Timer = ({youtubeRef}: TimerProps) => {
         height="200px"
         fontSize="55px"
         fontWeight="bold"
-        color="white"
+        color="#FFFFFFdd"
         justify="center"
         align="center"
         >
