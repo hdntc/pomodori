@@ -12,9 +12,10 @@ export interface ChatProps {
 
 export const Chat = ({ messages }: ChatProps) => {
     return <Flex
-    width="250px"
+    width="300px"
     height="100%"
     borderLeft="1px solid #ED3B3B66"
+    flexShrink="0"
     >
 
     </Flex>

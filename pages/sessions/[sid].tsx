@@ -19,48 +19,59 @@ const SessionPage = (props) => {
     width="100vw"
     >
         <Navbar/>
-        <Timer youtubeRef={youtube}/>
-
-        <Box
-        display="none"
+        <Flex
+        width="100%"
+        height="calc(100% - 40px)"
         >
-            <YouTube
-            videoId="vMAoP7Jlnw4"
-            iframeClassName="youtubePlayer"
-            ref={youtube}
-            opts={{
-                width: 800,
-                height: 450,
-                playerVars: {
-                    autoplay: 1
-                }
-            }}
-            onStateChange={(e) => alert(e.data)}
-            />
-        </Box>
-        <Button onClick={() => {
-            youtube.current.internalPlayer.loadVideoById("ABeNe3E6c54") // PAcCIkATg7c
-        }}>
-            aodijasod
-        </Button>
-        <Tracks
-        tracks={[
-            <Track
-            name="Cat Meow"
-            index={1}
-            id="dg4dmNvxdu0"
-            length={150}
-            queuedBy="jeremy"
-            />,
-            <Track
-            name="Cat Meow 2"
-            index={2}
-            id="dg4dmNvxdu0"
-            length={150}
-            queuedBy="jeremy"
-            />
-        ]}
-        />
+            <Flex
+            width="100%"
+            height="100%"
+            >
+                <Timer youtubeRef={youtube}/>
+                <Box
+                display="none"
+                >
+                    <YouTube
+                    videoId="vMAoP7Jlnw4"
+                    iframeClassName="youtubePlayer"
+                    ref={youtube}
+                    opts={{
+                        width: 800,
+                        height: 450,
+                        playerVars: {
+                            autoplay: 1
+                        }
+                    }}
+                    onStateChange={(e) => alert(e.data)}
+                    />
+                </Box>
+                <Button onClick={() => {
+                    youtube.current.internalPlayer.loadVideoById("ABeNe3E6c54") // PAcCIkATg7c
+                }}>
+                    aodijasod
+                </Button>
+                <Tracks
+                tracks={[
+                    <Track
+                    name="Cat Meow"
+                    index={1}
+                    id="dg4dmNvxdu0"
+                    length={150}
+                    queuedBy="jeremy"
+                    />,
+                    <Track
+                    name="Cat Meow 2"
+                    index={2}
+                    id="dg4dmNvxdu0"
+                    length={150}
+                    queuedBy="jeremy"
+                    />
+                ]}
+                />
+            </Flex>
+            <Chat messages={[]}/>
+
+        </Flex>
     </Box>
 }
 
