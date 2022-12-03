@@ -3,6 +3,7 @@ import { MdPause, MdPlayArrow } from "react-icons/md";
 import { useState, useEffect } from "react";
 import { MutableRefObject } from "react";
 import YouTube from "react-youtube";
+import secondsToMMSS from "../helper/secondsToMMSS";
 
 export interface TimerProps {
     youtubeRef: MutableRefObject<YouTube> // A ref created through useRef pointing to a YouTube component
@@ -10,13 +11,6 @@ export interface TimerProps {
 
 const Timer = ({youtubeRef}: TimerProps) => {
     const [time, setTime] = useState(1200);
-
-    const timeToMMSS = (seconds) => {
-        const s = seconds % 60;
-        const m = (seconds - s) / 60;
-
-        return m.toString().padStart(2, "0") + ":" + s.toString().padStart(2, "0")
-    }
 
     return <Box
     height="250px"
@@ -42,7 +36,7 @@ const Timer = ({youtubeRef}: TimerProps) => {
             >
                 a
             </Button>
-            {timeToMMSS(time)}
+            {secondsToMMSS(time)}
             <Button
             width="40px"
             height="40px"

@@ -7,7 +7,7 @@ import Volume from "./Volume"
 import Track, { TrackProps } from "./Track"
 
 export interface TracksProps {
-    tracks: React.FC<TrackProps>[]
+    tracks: JSX.Element[]
 }
 
 const Tracks = ({tracks}: TracksProps) => {

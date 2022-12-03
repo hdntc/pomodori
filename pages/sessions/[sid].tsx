@@ -6,6 +6,7 @@ import YouTube from "react-youtube";
 import Timer from "../../components/Timer";
 import Navbar from "../../components/Navbar";
 import Tracks from "../../components/Tracks";
+import Track from "../../components/Track";
 
 const SessionPage = (props) => {
     const router = useRouter();
@@ -41,7 +42,24 @@ const SessionPage = (props) => {
         }}>
             aodijasod
         </Button>
-        <Tracks/>
+        <Tracks
+        tracks={[
+            <Track
+            name="Cat Meow"
+            index={1}
+            id="dg4dmNvxdu0"
+            length={150}
+            queuedBy="jeremy"
+            />,
+            <Track
+            name="Cat Meow 2"
+            index={2}
+            id="dg4dmNvxdu0"
+            length={150}
+            queuedBy="jeremy"
+            />
+        ]}
+        />
     </Box>
 }
 
