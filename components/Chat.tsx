@@ -1,14 +1,9 @@
 import { Flex } from "@chakra-ui/react";
 import { Chatbox } from "./Chatbox";
-
-export interface Message {
-    content: string,
-    user: { userid: number, name: string },
-    timestamp: Date
-};
+import { Message } from "./Message";
 
 export interface ChatProps {
-    messages: Message[]
+    messages: ReturnType<typeof Message>[]
 };
 
 export const Chat = ({ messages }: ChatProps) => {
