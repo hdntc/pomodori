@@ -8,23 +8,35 @@ export interface MessageProps {
 };
 
 export const Message = ({ content, user, timestamp }: MessageProps) => {
-    const isOverflow = useIsOverflow();
+    //const isOverflow = useIsOverflow();
 
     return <Flex
     height="100px"
     overflowY="hidden"
     flexDir="column"
     p="8px"
+    _after={{
+        height: "1px",
+        width: "80%",
+        m: "auto",
+        bgColor: "#ED3B3B66",
+        content: `""`
+    }}
     >
         <Flex
         flexDir="row"
         height="20px"
+        textAlign="center"
+        align="center"
+        fontWeight="bold"
+        color={user.color}
         >
             <Flex
             width="18px"
             height="18px"
             borderRadius="full"
-            bgColor="red"
+            bgColor={user.color}
+            mr="6px"
             >
 
             </Flex>

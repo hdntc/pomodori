@@ -1,8 +1,10 @@
 import { useRouter } from "next/router"
 import { useRef } from "react";
 import { Flex, Box, Button } from "@chakra-ui/react";
-import { Message, ChatProps, Chat } from "../../components/Chat";
+import { ChatProps, Chat } from "../../components/Chat";
+import { Message } from "../../components/Message";
 import YouTube from "react-youtube";
+import useWebSocket, { ReadyState } from "react-use-websocket";
 
 import Timer from "../../components/Timer";
 import Navbar from "../../components/Navbar";
@@ -13,13 +15,32 @@ const SessionPage = (props) => {
     const router = useRouter();
     const youtube = useRef<null | YouTube>();
     const { sid } = router.query;
+    const { sendMessage, lastMessage, readyState } = useWebSocket(
+        `wss://94ek4848nf.execute-api.eu-west-2.amazonaws.com/dev`,
+        {
+            queryParams: {
+                sessionid : sid as string,
+                userid: 34925,
+                username: "jeremythegreat"
+            }
+        }
+    );
+
+    const connectionStatus = {
+        [ReadyState.CONNECTING]: 'Connecting',
+        [ReadyState.OPEN]: 'Open',
+        [ReadyState.CLOSING]: 'Closing',
+        [ReadyState.CLOSED]: 'Closed',
+        [ReadyState.UNINSTANTIATED]: 'Uninstantiated',
+    }[readyState];
+
 
     return <Box
     height="100vh"
     width="100vw"
     >
         <Navbar/>
-        <Flex
+        {connectionStatus === "Open" ? <Flex
         width="100%"
         height="calc(100% - 40px)"
         >
@@ -42,14 +63,8 @@ const SessionPage = (props) => {
                             autoplay: 1
                         }
                     }}
-                    onStateChange={(e) => alert(e.data)}
                     />
                 </Box>
-                <Button onClick={() => {
-                    youtube.current.internalPlayer.loadVideoById("ABeNe3E6c54") // PAcCIkATg7c
-                }}>
-                    aodijasod
-                </Button>
                 <Tracks
                 tracks={[
                     <Track
@@ -69,10 +84,23 @@ const SessionPage = (props) => {
                 ]}
                 />
             </Flex>
-            <Chat messages={[]}/>
+            <Chat
+            sendMessage={sendMessage}
+            messages={[
+                <Message 
+                content="test" 
+                user={{userid: 10, name:"Jeremy", color:"red"}} 
+                timestamp={new Date()}/>,
 
-        </Flex>
-    </Box>
+                <Message 
+                content="test" 
+                user={{userid: 15, name:"jomblesteen", color:"blue"}} 
+                timestamp={new Date()}/>
+            ]}
+            />
+
+        </Flex> : (connectionStatus === "Connecting" ? "Connecting..." : connectionStatus)}
+    </Box>;
 }
 
 export default SessionPage;
