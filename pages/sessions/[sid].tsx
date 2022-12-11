@@ -1,8 +1,8 @@
 import { useRouter } from "next/router"
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Flex, Box, Button } from "@chakra-ui/react";
 import { ChatProps, Chat } from "../../components/Chat";
-import { Message } from "../../components/Message";
+import { Message, MessageProps } from "../../components/Message";
 import YouTube from "react-youtube";
 import useWebSocket, { ReadyState } from "react-use-websocket";
 
@@ -25,6 +25,21 @@ const SessionPage = (props) => {
             }
         }
     );
+
+    const [messageHistory, setMessageHistory] = useState<MessageProps[]>([]);
+
+    useEffect(() => {
+        if(lastMessage !== null && lastMessage?.data !== "") {
+            let data = JSON.parse(lastMessage.data);
+            setMessageHistory(oldHistory => [...oldHistory, {user: data.user, content: data.content, timestamp: data.timestamp}]);
+        }
+    }, [lastMessage]);
+
+    useEffect(() => {
+        if(messageHistory.length !== 0) {
+            console.log(messageHistory);
+        }
+    }, [messageHistory]);
 
     const connectionStatus = {
         [ReadyState.CONNECTING]: 'Connecting',
@@ -49,6 +64,7 @@ const SessionPage = (props) => {
             height="100%"
             >
                 <Timer youtubeRef={youtube}/>
+                {lastMessage?.data}
                 <Box
                 display="none"
                 >

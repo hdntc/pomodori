@@ -1,6 +1,6 @@
 import { Textarea } from "@chakra-ui/react";
 import { SendMessage } from "react-use-websocket";
-import { KeyboardEvent, useState } from "react";
+import { KeyboardEvent, useState, useEffect } from "react";
 
 type ChatboxProps = {
     sendMessage: SendMessage
@@ -12,11 +12,16 @@ export const Chatbox = ({ sendMessage }: ChatboxProps) => {
     const textareaKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
         if(e.key === "Enter" && !e.shiftKey) {
             e.preventDefault();
-            alert((e.target as HTMLTextAreaElement).value);
 
             sendMessage(JSON.stringify({
                 action: "onMessage",
-                content: textareaInput
+                content: textareaInput,
+                user: {
+                    name: "Jerry",
+                    userid: 1,
+                    color: "red"
+                },
+                sessionid: 1
             }));
 
             setTextareaInput("");
