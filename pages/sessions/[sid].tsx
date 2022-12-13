@@ -5,6 +5,7 @@ import { ChatProps, Chat } from "../../components/Chat";
 import { Message, MessageProps } from "../../components/Message";
 import YouTube from "react-youtube";
 import useWebSocket, { ReadyState, SendMessage } from "react-use-websocket";
+import axios from "axios";
 
 import Timer from "../../components/Timer";
 import Navbar from "../../components/Navbar";

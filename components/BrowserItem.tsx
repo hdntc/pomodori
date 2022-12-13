@@ -1,4 +1,5 @@
-import { Flex, Text, UseNumberInputProps } from "@chakra-ui/react";
+import { Flex, Text, UseNumberInputProps, Link } from "@chakra-ui/react";
+import NextLink from "next/link";
 
 interface BrowserItemProps {
     name: string,
@@ -22,6 +23,8 @@ const BrowserItem = ({name, owner, numConnections, sessionid} : BrowserItemProps
     pl="32px"
     pr="32px"
     fontWeight="bold"
+    as={NextLink}
+    href={`/sessions/${sessionid}`}
     >
         <Flex
         flex="2"

@@ -1,4 +1,5 @@
 import { Flex, Heading, Text, Button, Img } from "@chakra-ui/react"
+import NextLink from "next/link";
 
 const Hero = ({}) => {
     return <Flex // hero
@@ -39,6 +40,8 @@ const Hero = ({}) => {
                     width="150px"
                     fontSize="24px"
                     boxShadow="xl"
+                    as={NextLink}
+                    href="/browse"
                     >
                         Let's go
                     </Button>
