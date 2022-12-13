@@ -1,28 +1,26 @@
 import { Textarea } from "@chakra-ui/react";
-import { SendMessage } from "react-use-websocket";
 import { KeyboardEvent, useState, useEffect } from "react";
+import { WebsocketMessageData, Color, Action, OnMessageData, SendFunction } from "../helper/types";
 
 type ChatboxProps = {
-    sendMessage: SendMessage
+    send: SendFunction
 };
 
-export const Chatbox = ({ sendMessage }: ChatboxProps) => {
+export const Chatbox = ({ send }: ChatboxProps) => {
     const [textareaInput, setTextareaInput] = useState<string>("");
 
     const textareaKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
         if(e.key === "Enter" && !e.shiftKey) {
             e.preventDefault();
 
-            sendMessage(JSON.stringify({
-                action: "onMessage",
+            const websocketMessage: OnMessageData = {
+                action: Action.onMessage,
                 content: textareaInput,
-                user: {
-                    name: "Jerry",
-                    userid: 1,
-                    color: "red"
-                },
+                user: { name: "Jerry", userid: 1, color: Color.Red },
                 sessionid: 1
-            }));
+            };
+
+            send(websocketMessage);
 
             setTextareaInput("");
         }

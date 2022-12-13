@@ -2,13 +2,14 @@ import { Flex } from "@chakra-ui/react";
 import { Chatbox } from "./Chatbox";
 import { Message } from "./Message";
 import { SendMessage } from "react-use-websocket";
+import { SendFunction } from "../helper/types";
 
 export interface ChatProps {
     messages: JSX.Element[],
-    sendMessage: SendMessage
+    send: SendFunction
 };
 
-export const Chat = ({ messages, sendMessage }: ChatProps) => {
+export const Chat = ({ messages, send }: ChatProps) => {
     return <Flex
     width="300px"
     height="100%"
@@ -25,7 +26,7 @@ export const Chat = ({ messages, sendMessage }: ChatProps) => {
             {messages}
         </Flex>
         <Chatbox
-        sendMessage={sendMessage}
+        send={send}
         />
     </Flex>
 };

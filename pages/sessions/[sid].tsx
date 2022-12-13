@@ -4,16 +4,19 @@ import { Flex, Box, Button } from "@chakra-ui/react";
 import { ChatProps, Chat } from "../../components/Chat";
 import { Message, MessageProps } from "../../components/Message";
 import YouTube from "react-youtube";
-import useWebSocket, { ReadyState } from "react-use-websocket";
+import useWebSocket, { ReadyState, SendMessage } from "react-use-websocket";
 
 import Timer from "../../components/Timer";
 import Navbar from "../../components/Navbar";
 import Tracks from "../../components/Tracks";
 import Track from "../../components/Track";
 
+import { Action, SendFunction, WebsocketMessageData } from "../../helper/types";
+
 const SessionPage = (props) => {
     const router = useRouter();
     const youtube = useRef<null | YouTube>();
+    const [messageHistory, setMessageHistory] = useState<MessageProps[]>([]);
     const { sid } = router.query;
     const { sendMessage, lastMessage, readyState } = useWebSocket(
         `wss://94ek4848nf.execute-api.eu-west-2.amazonaws.com/dev`,
@@ -26,7 +29,18 @@ const SessionPage = (props) => {
         }
     );
 
-    const [messageHistory, setMessageHistory] = useState<MessageProps[]>([]);
+    // Same as sendMessage from useWebSocket hook but w/ specific behaviour based on action
+    // To be used by downstream components
+    const send: SendFunction = (websocketData : WebsocketMessageData) => {
+        sendMessage(JSON.stringify(websocketData));
+
+        switch (websocketData.action) { // Using tagged union types
+            case Action.onMessage:
+                setMessageHistory(oldHistory => [...oldHistory, 
+                    {user: websocketData.user, content: websocketData.content, timestamp: new Date()}
+                ]);
+        }
+    };
 
     useEffect(() => {
         if(lastMessage !== null && lastMessage?.data !== "") {
@@ -101,7 +115,7 @@ const SessionPage = (props) => {
                 />
             </Flex>
             <Chat
-            sendMessage={sendMessage}
+            sendMessage={send}
             messages={messageHistory.map(messageProps => <Message
             content={messageProps.content}
             user={messageProps.user}
