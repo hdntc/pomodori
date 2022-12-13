@@ -115,7 +115,7 @@ const SessionPage = (props) => {
                 />
             </Flex>
             <Chat
-            sendMessage={send}
+            send={send}
             messages={messageHistory.map(messageProps => <Message
             content={messageProps.content}
             user={messageProps.user}

@@ -30,6 +30,13 @@ export interface OnSeekVideoData {
     time: number
 };
 
+export interface SessionDescription {
+    sessionid: number,
+    name: string,
+    ownerName: string,
+    numConnections: number
+};
+
 export type WebsocketMessageData = OnMessageData | OnSeekVideoData;
 
 export type SendFunction = (websocketMessage: WebsocketMessageData) => void;
