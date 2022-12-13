@@ -12,6 +12,7 @@ const Browser = (props) => {
         <Flex
         flexDir="row"
         height="50px"
+        flexShrink="0"
         width="100%"
         borderTopRightRadius="32px"
         borderTopLeftRadius="32px"
@@ -25,7 +26,7 @@ const Browser = (props) => {
         textAlign="center"
         >
             <Text
-            flex="3"
+            flex="2"
             >
                 Name
             </Text>
@@ -39,6 +40,14 @@ const Browser = (props) => {
             >
                 # Users
             </Text>
+        </Flex>
+        <Flex
+        flexDir="column"
+        width="100%"
+        height="100%"
+        overflowY="scroll"
+        >
+
         </Flex>
     </Flex>;
 }
