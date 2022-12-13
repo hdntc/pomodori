@@ -1,6 +1,12 @@
 import { Flex, Heading, Text } from "@chakra-ui/react";
+import { ReactNode, PropsWithChildren } from "react";
 
-const Browser = (props) => {
+interface BrowserProps {
+    children: ReactNode,
+
+};
+
+const Browser: React.FC<PropsWithChildren<BrowserProps>> = ({children}: BrowserProps) => {
     return <Flex
     height="100%"
     width="50%"
@@ -46,8 +52,13 @@ const Browser = (props) => {
         width="100%"
         height="100%"
         overflowY="scroll"
+        sx={{
+            "::-webkit-scrollbar":{
+                display: "none"
+            }
+        }}
         >
-
+            {children}
         </Flex>
     </Flex>;
 }

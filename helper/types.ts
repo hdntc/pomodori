@@ -33,7 +33,7 @@ export interface OnSeekVideoData {
 export interface SessionDescription {
     sessionid: number,
     name: string,
-    ownerName: string,
+    owner: string,
     numConnections: number
 };
 

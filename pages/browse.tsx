@@ -1,10 +1,12 @@
-import { Flex, Box, Heading, Text } from "@chakra-ui/react";
+import { Flex, Box, Heading, Text, Spinner } from "@chakra-ui/react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { SessionDescription } from "../helper/types";
 
 import Navbar from "../components/Navbar";
 import Browser from "../components/Browser";
+import BrowserItem from "../components/BrowserItem";
+
 
 const Browse = () => {
     const [ currentSessions, setCurrentSessions ] = useState<SessionDescription[] | null>(null);
@@ -32,7 +34,7 @@ const Browse = () => {
         >
             <Flex
             height="80%"
-            width="70%"
+            width="80%"
             align="center"
             flexDir="column"
             >
@@ -43,7 +45,17 @@ const Browse = () => {
                     Find a session
                 </Heading>
 
-                <Browser/>
+                {currentSessions === null ? 
+                <Spinner color="red.500"/> : 
+                <Browser>
+                    {currentSessions.map(session => <BrowserItem
+                        name={session.name}
+                        sessionid={session.sessionid}
+                        owner={session.owner}
+                        numConnections={session.numConnections}/>
+                    )}
+                </Browser>
+                }
             </Flex>
         </Flex>
     </Box>
