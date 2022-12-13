@@ -15,6 +15,8 @@ export const Message = ({ content, user, timestamp }: MessageProps) => {
     overflowY="hidden"
     flexDir="column"
     p="8px"
+    overflowX="hidden"
+    flexShrink="0"
     _after={{
         height: "1px",
         width: "80%",

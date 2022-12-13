@@ -69,7 +69,7 @@ const SessionPage = (props) => {
                 display="none"
                 >
                     <YouTube
-                    videoId="vMAoP7Jlnw4"
+                    videoId="mGc0Z7E0U1I"
                     iframeClassName="youtubePlayer"
                     ref={youtube}
                     opts={{
@@ -102,17 +102,11 @@ const SessionPage = (props) => {
             </Flex>
             <Chat
             sendMessage={sendMessage}
-            messages={[
-                <Message 
-                content="test" 
-                user={{userid: 10, name:"Jeremy", color:"red"}} 
-                timestamp={new Date()}/>,
-
-                <Message 
-                content="test" 
-                user={{userid: 15, name:"jomblesteen", color:"blue"}} 
-                timestamp={new Date()}/>
-            ]}
+            messages={messageHistory.map(messageProps => <Message
+            content={messageProps.content}
+            user={messageProps.user}
+            timestamp={messageProps.timestamp}
+            />)}
             />
 
         </Flex> : (connectionStatus === "Connecting" ? "Connecting..." : connectionStatus)}

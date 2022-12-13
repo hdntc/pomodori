@@ -19,6 +19,8 @@ export const Chat = ({ messages, sendMessage }: ChatProps) => {
         <Flex
         flexDir="column"
         height="calc(100% - 100px)"
+        overflowY="scroll"
+        overflowX="hidden"
         >
             {messages}
         </Flex>
