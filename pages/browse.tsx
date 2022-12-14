@@ -7,19 +7,18 @@ import Navbar from "../components/Navbar";
 import Browser from "../components/Browser";
 import BrowserItem from "../components/BrowserItem";
 
+export const getStaticProps = async (context) => {
+    const data = (await axios.get("https://5d38dibdnk.execute-api.eu-west-2.amazonaws.com/getCurrentSessions"))?.data as SessionDescription[];
 
-const Browse = () => {
-    const [ currentSessions, setCurrentSessions ] = useState<SessionDescription[] | null>(null);
+    return {
+        props: {sessionsData: data}
+    };
+};
 
+const Browse = ({sessionsData}) => {
     useEffect(() => {
-        const getCurrentSessions = async () => {
-            await axios.get("https://5d38dibdnk.execute-api.eu-west-2.amazonaws.com/getCurrentSessions").then(response => {
-                setCurrentSessions(response.data as SessionDescription[]);
-            });
-        };
-
-        getCurrentSessions();
-    }, []);
+        console.log(sessionsData);
+    });
 
     return <Box
     height="100vh"
@@ -45,17 +44,14 @@ const Browse = () => {
                     Find a session
                 </Heading>
 
-                {currentSessions === null ? 
-                <Spinner color="red.500"/> : 
                 <Browser>
-                    {currentSessions.map(session => <BrowserItem
+                    {sessionsData.map(session => <BrowserItem
                         name={session.name}
                         sessionid={session.sessionid}
                         owner={session.owner}
                         numConnections={session.numConnections}/>
                     )}
                 </Browser>
-                }
             </Flex>
         </Flex>
     </Box>
