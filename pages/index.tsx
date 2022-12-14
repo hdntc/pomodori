@@ -5,6 +5,12 @@ import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import Feature from "../components/Feature";
 
+export const getStaticProps = (context) => {
+    return {
+        props: {}
+    };
+}
+
 export default function Home() {
     return <Box
     height="100vh"

@@ -7,7 +7,7 @@ import Navbar from "../components/Navbar";
 import Browser from "../components/Browser";
 import BrowserItem from "../components/BrowserItem";
 
-export const getStaticProps = async (context) => {
+export const getServerSideProps = async (context) => {
     const data = (await axios.get("https://5d38dibdnk.execute-api.eu-west-2.amazonaws.com/getCurrentSessions"))?.data as SessionDescription[];
 
     return {

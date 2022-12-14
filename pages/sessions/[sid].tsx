@@ -79,7 +79,6 @@ const SessionPage = (props) => {
             height="100%"
             >
                 <Timer youtubeRef={youtube}/>
-                {lastMessage?.data}
                 <Box
                 display="none"
                 >
